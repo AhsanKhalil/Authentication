@@ -30,7 +30,6 @@ export default function AddEmployee() {
       body: JSON.stringify(data),
     });
 
-    
     if (res.ok) {
       Swal.fire({
         title: "Done",
@@ -38,7 +37,7 @@ export default function AddEmployee() {
         icon: "success",
       });
     } else {
-         Swal.fire({
+      Swal.fire({
         title: "Error",
         text: "Employee Not Saved!",
         icon: "error",
@@ -47,80 +46,118 @@ export default function AddEmployee() {
   };
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-6">Add New Employee</h1>
-      <Link
-        className="bg-blue-500 text-white p-2 rounded float-right"
-        href="/admin/employees"
-      >
-        View All
-      </Link>
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 py-10 px-4 flex justify-center items-start">
+      <div className="bg-white dark:bg-gray-950 shadow-lg rounded-xl p-8 w-full max-w-2xl">
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-2xl font-bold text-gray-800 dark:text-white">
+            Add New Employee
+          </h1>
+          <Link
+            href="/admin/employees"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition"
+          >
+            View All
+          </Link>
+        </div>
 
-      <form onSubmit={handleSubmit(saveEmp)}>
-        <div className="mt-2">
-          <label>Name: </label>
-          <input
-            {...register("name")}
-            className="border p-1"
-            placeholder="e.g Ali Bin Ejaz"
-          />
-          {errors.name && <p className="text-red-500">{errors.name.message}</p>}
-        </div>
-        <div className="mt-2">
-          <label>Email: </label>
-          <input
-            {...register("email")}
-            className="border p-1"
-            placeholder="e.g abc@gmail.com"
-          />
-          {errors.email && (
-            <p className="text-red-500">{errors.email.message}</p>
-          )}
-        </div>
-        <div className="mt-2">
-          <label>Designation: </label>
-          <input
-            {...register("designation")}
-            className="border p-1"
-            placeholder="e.g Faculty"
-          />
-          {errors.designation && (
-            <p className="text-red-500">{errors.designation.message}</p>
-          )}
-        </div>
-        <div className="mt-2">
-          <label>Salary: </label>
-          <input
-            {...register("salary")}
-            className="border p-1"
-            placeholder="e.g Faculty"
-          />
-          {errors.salary && (
-            <p className="text-red-500">{errors.salary.message}</p>
-          )}
-        </div>
-        <div className="mt-2">
-          <label>Password: </label>
-          <input
-            {...register("password")}
-            className="border p-1"
-            placeholder="e.g Faculty"
-          />
-        </div>
-        <div className="mt-2">
-          <label>Joining Date: </label>
-          <input
-            {...register("joiningDate")}
-            className="border p-1"
-            placeholder="e.g Faculty"
-          />
-        </div>
-        <div className="mt-2">
-          <button type="submit" className="bg-green-500 text-white p-2 rounded">
-            Save
-          </button>
-        </div>
-      </form>
+        <form onSubmit={handleSubmit(saveEmp)} className="space-y-5">
+          {/* Name */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              Name
+            </label>
+            <input
+              {...register("name")}
+              className="mt-1 w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-900 dark:text-white"
+              placeholder="Enter you name"
+            />
+            {errors.name && (
+              <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
+            )}
+          </div>
+
+          {/* Email */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              Email
+            </label>
+            <input
+              {...register("email")}
+              className="mt-1 w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-900 dark:text-white"
+              placeholder="Enter Email"
+            />
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+            )}
+          </div>
+
+          {/* Designation */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              Designation
+            </label>
+            <input
+              {...register("designation")}
+              className="mt-1 w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-900 dark:text-white"
+              placeholder="Enter Faculty"
+            />
+            {errors.designation && (
+              <p className="text-red-500 text-sm mt-1">{errors.designation.message}</p>
+            )}
+          </div>
+
+          {/* Salary */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              Salary
+            </label>
+            <input
+              {...register("salary")}
+              type="number"
+              className="mt-1 w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-900 dark:text-white"
+              placeholder="Enter Salary"
+            />
+            {errors.salary && (
+              <p className="text-red-500 text-sm mt-1">{errors.salary.message}</p>
+            )}
+          </div>
+
+          {/* Password */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              Password
+            </label>
+            <input
+              {...register("password")}
+              type="password"
+              className="mt-1 w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-900 dark:text-white"
+              placeholder="Enter Password"
+            />
+          </div>
+
+          {/* Joining Date */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              Joining Date
+            </label>
+            <input
+              {...register("joiningDate")}
+              type="date"
+              className="mt-1 w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-900 dark:text-white"
+            />
+          </div>
+
+          {/* Submit Button */}
+          <div className="pt-4">
+            <button
+              type="submit"
+              className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 rounded-md transition"
+            >
+              Save Employee
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

@@ -5,9 +5,10 @@ export async function middleware(req) {
   const token = req.cookies.get("token")?.value;
   const url = req.nextUrl.clone();
 
+  // 🚫 No token? Block access to admin/user pages
   if (!token) {
     if (url.pathname.startsWith("/admin") || url.pathname.startsWith("/user")) {
-      //return NextResponse.redirect(new URL("/", req.url));
+      return NextResponse.redirect(new URL("/", req.url)); // Redirect to login
     }
     return NextResponse.next();
   }

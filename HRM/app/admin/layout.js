@@ -18,12 +18,10 @@ export default function AdminLayout({ children }) {
           <Link href="/admin/employees" className="block px-4 py-2 rounded hover:bg-gray-200">
             Employees
           </Link>
-          <Link href="/admin/attendance" className="block px-4 py-2 rounded hover:bg-gray-200">
+          <Link href="/user/attendance" className="block px-4 py-2 rounded hover:bg-gray-200">
             Attendance
           </Link>
-          <Link href="/admin/payroll" className="block px-4 py-2 rounded hover:bg-gray-200">
-            Payroll
-          </Link>
+          
         </nav>
       </aside>
 

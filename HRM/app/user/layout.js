@@ -18,9 +18,7 @@ export default function UserLayout({ children }) {
           <Link href="/user/attendance" className="block px-4 py-2 rounded hover:bg-gray-200">
             Attendance
           </Link>
-           <Link href="/user/Payroll" className="block px-4 py-2 rounded hover:bg-gray-200">
-            Payroll
-          </Link>
+          
         </nav>
       </aside>
 
